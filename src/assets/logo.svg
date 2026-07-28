@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" role="img" aria-labelledby="title desc">
+  <title>GoalSphere logo</title>
+  <desc>Stylized football globe with branding text.</desc>
+  <defs>
+    <linearGradient id="globeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f78d4" />
+      <stop offset="100%" stop-color="#0d3b76" />
+    </linearGradient>
+    <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb703" />
+      <stop offset="100%" stop-color="#fb8500" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="40" fill="url(#globeGradient)" stroke="#fff" stroke-width="4" />
+  <path d="M32 48 C20 58 22 78 40 86" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+  <path d="M80 42 C90 54 88 78 70 88" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+  <path d="M33 75 C50 80 70 78 87 70" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+  <path d="M59 20 L70 40 L92 42 L74 57 L80 78 L59 68 L38 78 L44 57 L26 42 L48 40 Z" fill="#fff" opacity="0.75" />
+  <path d="M120 45 C150 25 190 10 210 35" fill="none" stroke="url(#orbitGradient)" stroke-width="14" stroke-linecap="round" />
+  <circle cx="210" cy="35" r="8" fill="#ffdd57" />
+  <text x="120" y="87" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0d3b76">GOAL</text>
+  <text x="120" y="110" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#2563eb">SPHERE</text>
+</svg>

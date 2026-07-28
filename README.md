@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GoalSphere MVP
 
-## Getting Started
+A launch-ready football platform MVP with:
+- React + Vite frontend
+- Sanity articles integration
+- Supabase teams integration
+- Football fixtures via Vercel serverless proxy
 
-First, run the development server:
+## Setup
 
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Copy environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+   On Windows PowerShell, use:
+   ```powershell
+   cp .env.example .env
+   ```
+3. Fill in `.env` with your own values, including `VITE_SANITY_PROJECT_ID` and `VITE_SANITY_DATASET` if needed.
+
+> After editing `.env`, stop and restart the Vite server so the new variables are loaded.
+
+## Run locally
+
+Use Vite for normal frontend development:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For fixtures proxy support in local development, use Vercel dev:
+```bash
+npx vercel dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy to Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Connect this repository to Vercel.
+2. Set the environment variables in the Vercel dashboard.
+3. Vercel will use `npm run build` automatically.
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/` — React app source files
+- `src/services/` — data integration services
+- `api/fixtures.js` — serverless proxy for the football fixtures API
+- `vercel.json` — Vercel deployment configuration
