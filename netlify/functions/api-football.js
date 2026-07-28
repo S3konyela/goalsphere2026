@@ -1,5 +1,12 @@
 const UPSTREAM = "https://v3.football.api-sports.io";
-const PREFIX = "/.netlify/functions/api-football";
+const PREFIXES = ["/.netlify/functions/api-football", "/api-football"];
+
+function stripPrefix(path) {
+  for (const prefix of PREFIXES) {
+    if (path.startsWith(prefix)) return path.slice(prefix.length) || "/";
+  }
+  return path;
+}
 
 exports.handler = async (event) => {
   const apiKey = process.env.API_FOOTBALL_KEY;
@@ -10,7 +17,7 @@ exports.handler = async (event) => {
     };
   }
 
-  const subPath = event.path.replace(PREFIX, "") || "/";
+  const subPath = stripPrefix(event.path);
   const qs = new URLSearchParams(event.queryStringParameters || {}).toString();
   const url = `${UPSTREAM}${subPath}${qs ? `?${qs}` : ""}`;
 
