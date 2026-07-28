@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
           },
         },
         '/api-fd': {
-          target: 'https://api.football-data.org',
+          target: 'https://api.football-data.org/v4',
           changeOrigin: true,
           rewrite: path => path.replace(/^\/api-fd/, ''),
           headers: {

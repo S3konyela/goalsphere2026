@@ -1,4 +1,4 @@
-const UPSTREAM = "https://api.football-data.org";
+const UPSTREAM = "https://api.football-data.org/v4";
 const PREFIXES = ["/.netlify/functions/football-data", "/api-fd"];
 
 function stripPrefix(path) {
