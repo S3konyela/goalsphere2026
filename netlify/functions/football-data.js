@@ -1,5 +1,5 @@
-const UPSTREAM = "https://api.kickoffapi.com";
-const PREFIXES = ["/.netlify/functions/api-kickoff", "/api-kickoff"];
+const UPSTREAM = "https://api.football-data.org";
+const PREFIXES = ["/.netlify/functions/football-data", "/api-fd"];
 
 function stripPrefix(path) {
   for (const prefix of PREFIXES) {
@@ -9,11 +9,11 @@ function stripPrefix(path) {
 }
 
 exports.handler = async (event) => {
-  const apiKey = process.env.KICKOFF_KEY;
+  const apiKey = process.env.FOOTBALL_DATA_API_KEY;
   if (!apiKey) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Missing KICKOFF_KEY environment variable." }),
+      body: JSON.stringify({ error: "Missing FOOTBALL_DATA_API_KEY environment variable." }),
     };
   }
 
@@ -23,11 +23,7 @@ exports.handler = async (event) => {
 
   try {
     const res = await fetch(url, {
-      headers: {
-        "x-api-key": apiKey,
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-        "Accept": "application/json",
-      },
+      headers: { "X-Auth-Token": apiKey },
     });
     const body = await res.text();
     return {

@@ -9,8 +9,8 @@
   status = 200
 
 [[redirects]]
-  from = "/api-kickoff/*"
-  to = "/.netlify/functions/api-kickoff/:splat"
+  from = "/api-fd/*"
+  to = "/.netlify/functions/football-data/:splat"
   status = 200
 
 [[redirects]]

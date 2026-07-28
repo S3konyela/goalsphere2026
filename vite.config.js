@@ -27,14 +27,6 @@ export default defineConfig(({ mode }) => {
             'X-Auth-Token': env.VITE_FOOTBALLDATA_TOKEN,
           },
         },
-        '/api-kickoff': {
-          target: 'https://api.kickoffapi.com',
-          changeOrigin: true,
-          rewrite: path => path.replace(/^\/api-kickoff/, ''),
-          headers: {
-            'x-api-key': env.VITE_KICKOFF_KEY,
-          },
-        },
       },
     },
   };

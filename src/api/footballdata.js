@@ -1,84 +1,43 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api-kickoff/api/v1',
+  baseURL: '/api-fd',
 });
 
-const LEAGUE = 1;
-const SEASON = 2026;
+const STAGE_MAP = {
+  LAST_32: 'ROUND_OF_32',
+  LAST_16: 'ROUND_OF_16',
+};
+
+function normaliseStage(stage) {
+  return STAGE_MAP[stage] || stage || 'GROUP_STAGE';
+}
 
 function normalise(item) {
-  const statusMap = {
-    'NS':  'SCHEDULED', 'TBD': 'SCHEDULED',
-    '1H':  'IN_PLAY',   '2H':  'IN_PLAY',
-    'HT':  'PAUSED',    'BT':  'PAUSED',   'INT': 'PAUSED',
-    'ET':  'IN_PLAY',   'P':   'IN_PLAY',  'LIVE': 'IN_PLAY',
-    'FT':  'FINISHED',  'AET': 'FINISHED', 'PEN': 'FINISHED',
-    'AWD': 'FINISHED',  'WO':  'FINISHED',
-    'PST': 'POSTPONED', 'SUSP':'POSTPONED',
-    'CANC':'CANCELLED', 'ABD': 'CANCELLED',
-  };
-
   return {
-    id:       item.id,
-    utcDate:  item.date,
-    status:   statusMap[item.statusShort] || 'SCHEDULED',
-    matchday: null,
-    stage:    'GROUP_STAGE',
-    group:    null,
-    venue:    item.venue?.name || null,
+    id: item.id,
+    utcDate: item.utcDate,
+    status: item.status === 'TIMED' ? 'SCHEDULED' : item.status,
+    matchday: item.matchday ?? null,
+    stage: normaliseStage(item.stage),
+    group: item.group || null,
+    venue: item.venue || null,
     homeTeam: { id: item.homeTeam?.id, name: item.homeTeam?.name || 'TBD' },
     awayTeam: { id: item.awayTeam?.id, name: item.awayTeam?.name || 'TBD' },
     score: {
       fullTime: {
-        home: item.goalsHome ?? null,
-        away: item.goalsAway ?? null,
+        home: item.score?.fullTime?.home ?? null,
+        away: item.score?.fullTime?.away ?? null,
       },
       halfTime: {
-        home: item.scoreHalfHome ?? null,
-        away: item.scoreHalfAway ?? null,
+        home: item.score?.halfTime?.home ?? null,
+        away: item.score?.halfTime?.away ?? null,
       },
     },
   };
 }
 
 export async function getWCMatches() {
-  const response = await api.get('/fixtures', {
-    params: { league: LEAGUE, season: SEASON },
-  });
-  return (response.data.response || []).map(normalise);
-}
-
-export async function getWCMatchesByRound(round) {
-  const response = await api.get('/fixtures', {
-    params: { league: LEAGUE, season: SEASON, round },
-  });
-  return (response.data.response || []).map(normalise);
-}
-
-export async function getWCStandings() {
-  const response = await api.get('/standings', {
-    params: { league: LEAGUE, season: SEASON },
-  });
-  return response.data.response || [];
-}
-
-export async function getWCTeams() {
-  const response = await api.get('/teams', {
-    params: { league: LEAGUE, season: SEASON },
-  });
-  return response.data.response || [];
-}
-
-export async function getWCScorers() {
-  const response = await api.get('/topscorers', {
-    params: { league: LEAGUE, season: SEASON },
-  });
-  return response.data.response || [];
-}
-
-export async function getMatch(id) {
-  const response = await api.get('/fixtures', { params: { id } });
-  const item = response.data.response?.[0];
-  return item ? normalise(item) : null;
+  const response = await api.get('/competitions/WC/matches');
+  return (response.data.matches || []).map(normalise);
 }
