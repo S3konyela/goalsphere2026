@@ -9287,3 +9287,190 @@ img { max-width: 100%; display: block; }
   color: #64748b;
   line-height: 1.4;
 }
+
+/* ── Leagues Page ──────────────────────────────────────────────────────────── */
+.lg-page-header {
+  background: var(--bg);
+  padding: 2.75rem 0 2.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.lg-page-title {
+  color: #fff;
+  font-size: 2.15rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.lg-page-sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.95rem;
+  max-width: 68ch;
+}
+
+.lg-content {
+  padding: 2rem 0 4rem;
+}
+
+.lg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.lg-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.lg-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+
+.lg-card-country {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.lg-card-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.lg-card-cta {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.lg-filter-bar {
+  position: sticky;
+  top: 68px;
+  z-index: 45;
+  background: rgba(255,255,255,0.95);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.85rem 0;
+}
+
+.lg-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.lg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.lg-table th,
+.lg-table td {
+  padding: 0.65rem 0.85rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.lg-table th {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.lg-table tbody tr:not(:last-child) td {
+  border-bottom: 1px solid var(--border);
+}
+
+.lg-table-team-col {
+  text-align: left !important;
+}
+
+.lg-team-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+}
+
+.lg-team-crest {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.lg-fixtures-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.lg-section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+}
+
+.lg-match-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.lg-match-row {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr auto 1fr;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+}
+
+.lg-match-date {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.lg-match-team--home { text-align: right; }
+.lg-match-team--away { text-align: left; }
+
+.lg-match-score,
+.lg-match-vs {
+  font-weight: 700;
+  color: var(--blue);
+  padding: 0 0.4rem;
+}
+
+.lg-empty-note {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  padding: 1.5rem 0;
+}
+
+@media (max-width: 700px) {
+  .lg-fixtures-grid {
+    grid-template-columns: 1fr;
+  }
+  .lg-match-row {
+    grid-template-columns: 3.5rem 1fr auto 1fr;
+    font-size: 0.78rem;
+  }
+}

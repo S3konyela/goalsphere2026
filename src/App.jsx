@@ -6,6 +6,8 @@ import ArticleDetail from './pages/ArticleDetail.jsx';
 import Fixtures from './pages/Fixtures.jsx';
 import MatchPreview from './pages/MatchPreview.jsx';
 import Calendar from './pages/Calendar.jsx';
+import Leagues from './pages/Leagues.jsx';
+import LeagueDetail from './pages/LeagueDetail.jsx';
 import Teams from './pages/Teams.jsx';
 import TeamDetail from './pages/TeamDetail.jsx';
 import Players from './pages/Players.jsx';
@@ -26,6 +28,8 @@ export default function App() {
         <Route path="fixtures" element={<Fixtures />} />
         <Route path="fixtures/:id" element={<MatchPreview />} />
         <Route path="calendar" element={<Calendar />} />
+        <Route path="leagues" element={<Leagues />} />
+        <Route path="leagues/:code" element={<LeagueDetail />} />
         <Route path="teams" element={<Teams />} />
         <Route path="teams/:slug" element={<TeamDetail />} />
         <Route path="players" element={<Players />} />

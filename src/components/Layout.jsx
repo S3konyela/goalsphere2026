@@ -11,6 +11,7 @@ export default function Layout() {
   const navLinks = [
     { to: '/', label: 'Home', end: true },
     { to: '/fixtures', label: 'Fixtures' },
+    { to: '/leagues', label: 'Leagues' },
     { to: '/teams', label: 'Teams' },
     { to: '/players', label: 'Players' },
     { to: '/predictions', label: 'Predictions' },
